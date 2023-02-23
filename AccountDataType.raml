@@ -1,0 +1,16 @@
+#%RAML 1.0 DataType
+properties:
+  ID: 
+    type: number
+    maximum: 10
+    minimum: 1
+    required: false
+  Name:
+    type: string
+    minLength: 2
+  Type: !include examples/accountType.raml
+  Address: string
+  Airmiles: number
+  CreationDate: 
+     type: datetime
+     required: false

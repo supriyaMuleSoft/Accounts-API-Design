@@ -1,0 +1,42 @@
+#%RAML 1.0
+title: AccountsAPI_SV
+description: To retrieve and create customer Accounts 
+types:
+  AccountType: !include examples/accountType.raml
+  AccountDataType: !include AccountDataType.raml
+/accounts:
+  get:
+    headers:
+      Customer_ID: number            
+    queryParameters:
+      accountType:
+        type: AccountType         
+        required: false     
+      Name: 
+       description: Filter based on Name
+       required: false   
+    responses:
+      200:
+        description: Retrieving Customer Accounts
+        body:
+          application/json: 
+             items: AccountDataType                          
+             examples: !include examples/retrieveAccount.raml
+                                  
+  post:
+    headers:
+      Customer_ID: number
+    body:
+      application/json:
+        examples: !include examples/AccountCreation.raml
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {"message": "Account Created"}
+       
+          
+
+  
+    
